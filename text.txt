@@ -1,2 +1,0 @@
-hlo world
-I AM RED
