@@ -1,12 +1,11 @@
 
-
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+  document.getElementById('name')
+      .addEventListener('keyup', function(event) {
+          if (event.code === 'Enter')
+          {
+              event.preventDefault();
+              document.querySelector('form').submit();
+          }
+      });
 
 

@@ -30,9 +30,9 @@ export class Footer extends Component {
                     <div id="tailpara" class="tailpara3">
                         <h4>Get In Touch</h4>
                         <p>
-                        <i class="fa fa-home w3-large"></i>&nbsp;&nbsp;&nbsp;25ES2-E,1st Floor,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Sant Nagar, East of <br/>&nbsp;&nbsp;&nbsp;&nbsp;Kailash, New Delhi, <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delhi, India 110065<br />
-                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;info@naini-tal<br />
-                        <i class="fa fa-whatsapp"></i>&nbsp;&nbsp;&nbsp;+91 98765 43210
+                        <i class="fa fa-home w3-large"></i>&nbsp;&nbsp;&nbsp;25ES2-E,1st Floor,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Sant Nagar, East of <br/>&nbsp;&nbsp;&nbsp;&nbsp;Kailash, New Delhi, <br/>&nbsp;&nbsp;&nbsp;&nbsp;Delhi, India 110065<br />
+                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;info@naini-tal<br />
+                        <i class="fa fa-whatsapp"></i>&nbsp;&nbsp;+91 98765 43210
                         </p>
 
                   
