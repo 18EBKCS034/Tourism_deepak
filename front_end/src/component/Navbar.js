@@ -4,6 +4,8 @@ import Home from './Home'
 import Loginform from './Loginform'
 
 import About from './About';
+import Hotel from './Hotel';
+import Hotelregister from './Hotelregister';
 
 export class Navbar extends Component {
 
@@ -21,6 +23,7 @@ export class Navbar extends Component {
     render() {
         return (
             <div>
+    
                 <div class="topnav" id="myTopnav">
                     <div class="header1">
                         <div class="header2">
@@ -40,7 +43,7 @@ export class Navbar extends Component {
 
                           
                             <NavLink className="active" to="/home"><i class="fa fa-fw fa-home"></i>Home</NavLink>
-                            <NavLink to="/contact"><i class="fa fa-hotel"></i> Hotels</NavLink>
+                            <NavLink to="/hotelRegister"><i class="fa fa-hotel"></i> Hotels</NavLink>
                             <NavLink to="/about"><i class="fa fa-fw fa-file"></i>About</NavLink>
                             <NavLink to="/Login"><i class="fa fa-fw fa-user"></i>Login</NavLink>
 
@@ -53,10 +56,10 @@ export class Navbar extends Component {
 
                     <Route path="/home" component={Home} />
                     <Route path="/about" component={About} />
-
+                    <Route path="/hotelRegister" component={Hotelregister} />
                     <Route path="/login" component={Loginform} />
-
                 </Switch>
+            
             </div>
         )
     }

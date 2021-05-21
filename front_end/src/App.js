@@ -14,7 +14,7 @@ function App() {
      
            <Router>
            <Navbar/>
-             </Router>
+            </Router>
 
 
   
