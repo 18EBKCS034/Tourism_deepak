@@ -4,9 +4,12 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var nodemailer = require('nodemailer');
+var path = require('path');
+var upload = require('./multerConfig');
 
 var app = express();
 app.use(cors());
+app.use(express.static(path.join(__dirname,'Uploads')));
 
 var client = new MongoClient('mongodb+srv://mydashboard:mydashboard@cluster0.5cuqd.mongodb.net/tour?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true});
 var connection;
@@ -18,6 +21,28 @@ client.connect((err, db)=>{
     else{
         console.log(err);
     }
+});
+
+app.post('/postHotel', bodyParser.json(),(req,res)=>{
+    upload(req,res,(err)=>{
+        if(err){
+            console.log("Error Occured during upload ");
+            console.log(err);
+            res.send({status:"failed", data:err});
+        }
+        else{
+            var hotelCollection = connection.db('tour').collection('hotel');
+            var images = req.files.hotel.map(p=>p.filename);
+            hotelCollection.insert({HotelDetails:req.body, HotelImages:images},(err,result)=>{
+                if(!err){
+                    res.send({status:"ok",data:"Hotel Posted Succesfully"});
+                }
+                else{
+                    res.send({status:"failed",data:err});
+                }
+            });
+        }
+    });
 });
 
 app.get('/checkUser', (req,res)=>{

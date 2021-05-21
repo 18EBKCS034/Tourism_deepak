@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import $ from 'jquery'
 import axios from 'axios'
 
-export default function Loginform() {
+export default function Loginform(props) {
 
 	var passwordRegex = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
     var emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
@@ -17,7 +17,7 @@ export default function Loginform() {
 	const [code2, setcode2] = useState("");
 	const [code3, setcode3] = useState("");
 
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		$(document).ready(function($) {
@@ -41,16 +41,24 @@ export default function Loginform() {
             }
             else{
                 alert("Hello "+res.data.data[0].name+" you are successfully logged in.");
-                // dispatch({type: "LOGIN_TRUE"});
-                // if(res.data.data[0].iam == "buyer"){
-                //     dispatch({type: "BUYER"});
-                // }
-                // var uid = res.data.data[0]._id;
-                // dispatch({type: "LOGGEDIN",payload: uid });
-                // localStorage.setItem("LOGIN_ID", uid);
-                // props.history.push('/');
+                dispatch({type: "LOGIN_TRUE"});
+                var uid = res.data.data[0]._id;
+                dispatch({type: "LOGGEDIN",payload: uid });
+                localStorage.setItem("LOGIN_ID", uid);
+                props.history.push('/');
             }
         });
+    }
+
+	function forgotPassword(){
+        if(email == "" || email == undefined){
+            alert("First Enter your email then request for password recovery");
+        }
+        else{
+            axios.get('http://localhost:3000/forgotPassword?email='+email).then((res)=>{
+                alert(res.data.data);
+            });
+        }
     }
 
 	function verify(){
@@ -130,7 +138,7 @@ export default function Loginform() {
 							<input type="button" class="button" value="Login" onClick={()=>{login();}}/>
 						</form>
 						<div class="help-text">
-							<p><a href="#">Forget your password?</a></p>
+							<p><a href="#" onClick={()=>{forgotPassword();}}>Forget your password?</a></p>
 						</div>
 					</div>
 				</div>
