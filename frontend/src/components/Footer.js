@@ -98,7 +98,7 @@ export default function Footer() {
             className={`${style.FooterContent} justify-content-start justify-content-sm-center justify-content-lg-between`}
           >
             <div className="d-flex align-items-center flex-wrap">
-              <h6>© 2021 Airbnb, Inc. All rights reserved</h6>
+              <h6>© 2021 Take A Trip, Inc. All rights reserved</h6>
               <ul>
                 <li>
                   <a href="#">Privacy</a>

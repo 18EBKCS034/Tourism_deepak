@@ -1,26 +1,21 @@
 import React from "react";
-import Location from "../components/Location";
-import LiveAnywhere from "../components/LiveAnywhere";
-import Experience from "../components/Experience";
-import MillionHost from "../components/MillionHost";
-import TabsSection from "../components/TabsSection";
-import Footer from "../components/Footer";
+import Header from './Header';
+import SearchPage from './SearchPage'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+
 
 export default function Home() {
   return (
     <>
       <div>
-         <div className="customContainer">
-          <Location />
-          <LiveAnywhere />
-        </div>
-
-        <Experience />
-        <div className="customContainer">
-          <MillionHost />
-          <TabsSection />
-        </div>
-        <Footer />
+        <Header />
+        <Switch>
+          <Route path="/search">
+            <SearchPage />
+          </Route>
+          </Switch>
+        
       </div>
     </>
   );

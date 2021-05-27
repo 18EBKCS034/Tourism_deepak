@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import style from "../style/header.module.css";
-import style2 from "../style/heroSection.module.css";
-import Home from "./Home";
-import Loginform from "./Loginform";
-import Hotelregister from "./Hotelregister";
+import HeaderForm from "./HeaderForm";
 import ResponsiveHeader from "./ResponsiveHeader";
-import {NavLink,Switch,Route} from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux";
+import { NavLink, Switch, Route } from 'react-router-dom';
+import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import style2 from '../style/heroSection.module.css'
+import Home2 from "./Home2";
+import Signup from './Signup';
+import Login from './Login';
+import Host from './Host';
 
 export default function Header() {
-
-  const [city, setcity] = useState("");
+  const history = useHistory();
+  
 
   const [translateHeader, setTranslateHeader] = useState(false);
   function handleScroll(e) {
@@ -26,20 +29,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, true);
   });
 
-  const islogin = useSelector(state => state.isLogin);
-    const dispatch = useDispatch();
-
-    function logout(){
-        dispatch( {type:"LOGIN_FALSE"} );
-        dispatch( {type:"LOGGEDOUT"} );
-        localStorage.setItem("LOGIN_ID", "no");
-    }
-
-    function search(){
-        alert(city);
-        dispatch({type:"SEARCHED",payload:city});
-    }
-
   return (
     <>
       <div
@@ -48,6 +37,7 @@ export default function Header() {
       ></div>
       <ResponsiveHeader translateHeader={translateHeader} />
       <div className={`${style.Header}`}>
+        <NavLink to='/' exact>
         <a
           href="#"
           className={style.logo}
@@ -55,47 +45,77 @@ export default function Header() {
         >
           <span className="d-none d-xl-block">Take A Trip</span>
         </a>
-        <div>
-            <select onChange={(e)=>{setcity(e.target.value)}}>
-                <option value=''>Select City</option>
-                <option value='Delhi'>Delhi</option>
-                <option value='Mumbai'>Mumbai</option>
-                <option value='Bangalore'>Bangalore</option>
-                <option value='Chennai'>Chennai</option>
-                <option value='Jaipur'>Jaipur</option>
-            </select>
-            <button onClick={()=>{search();}}>
-              <i class="fas fa-search"></i>
-              <span className="ml-2">Search</span>
-            </button>
-        </div>
+        </NavLink>
+        <HeaderForm translateHeader={translateHeader} />
         <div className={`ml-auto ${style.actionBtn}`}>
+          <NavLink to='/Host' exact>
+          <a href="#" style={{ color: translateHeader ? "#222222" : "white" }}>
+            Become a host
+          </a>
+          </NavLink>
           <a href="#" style={{ color: translateHeader ? "#222222" : "" }}>
             <i class="fas fa-globe"></i>
           </a>
-              {islogin?"":<NavLink to='/login' exact><a class="dropdown-item" href="#">
+          <div class="dropdown">
+            <a
+              className={style.dropdownBtn}
+              href="#"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style={{ border: translateHeader ? "1px solid #cccccc" : "" }}
+            >
+              <i class="fas fa-bars"></i>
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <NavLink to='/Signup' exact>
+              <a class="dropdown-item" href="#">
+                Sign up
+              </a>
+              </NavLink>
+              <NavLink to='/Login' exact>
+              <a class="dropdown-item" href="#">
                 Login in
-              </a></NavLink>}
-              <NavLink to={islogin?'/register':'/login'} exact><a class="dropdown-item" href="#">
-                Register Hotel
-              </a></NavLink>
-              {islogin?<a onClick={()=>{logout();}} class="dropdown-item" href="#">
-                Logout
-              </a>:""}
+              </a>
+              </NavLink>
+              <NavLink to='/Host' exact>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                Host your home
+              </a>
+              </NavLink>
+            </div>
+          </div>
         </div>
+        
       </div>
+      
       <div
       className={style2.HeroSection}
       style={{ backgroundImage: "url('/images/heroSectionBg.png')" }}
     >
+      
       <h1>Go Near</h1>
-      <button>Explore nearby stays</button>
+      <Button onClick={() => history.push('/search')} variant='outlined'>Explore Nearby</Button>
     </div>
-      <Switch>
-          <Route path='/' exact component={Home}></Route>
-          <Route path='/login' exact component={Loginform}></Route>
-          <Route path='/register' exact component={Hotelregister}></Route>
-      </Switch>
+    
+    <Switch>
+      <Route path='/Signup' exact component={Signup}>
+      </Route>
+      <Route path='/Login' exact component={Login}>
+      </Route>
+      <Route path='/Host' exact component={Host}>
+      </Route>
+      <Route path='/' exact component={Home2}>
+      </Route>
+
+    </Switch>
     </>
   );
 }
