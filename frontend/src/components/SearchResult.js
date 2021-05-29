@@ -13,7 +13,8 @@ function SearchResult({
     laundry,
     lift,
     parking,
-    pool, 
+    pool,
+    spa, 
     price,
 }) {
     return (
@@ -34,6 +35,7 @@ function SearchResult({
                         {parking?<img src='images/parking.png' />:""}
                         {lift?<img src='images/lift.png' />:""}
                         {pool?<img src='images/pool.png' />:""}
+                        {spa?<img src='images/SPA.png' />:""}
                     </div>
                 </div>
 

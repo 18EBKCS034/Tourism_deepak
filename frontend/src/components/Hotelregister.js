@@ -26,6 +26,7 @@ function Hotelregister() {
     const [parking, setparking] = useState("");
     const [location, setlocation] = useState("");
     const [pool, setpool] = useState("");
+    const [spa, setspa] = useState("");
 
     function setImg(e){
         e.target.name == "hotel" && (hotel = e.target.files);
@@ -66,6 +67,7 @@ function Hotelregister() {
             formData.append("laundry",laundry);
             formData.append("kitchen",kitchen);
             formData.append("pool",pool);
+            formData.append("spa",spa);
             formData.append("userId",userId);
             for(var h of hotel){
                 formData.append('hotel',h);
@@ -129,11 +131,14 @@ function Hotelregister() {
                         </div>
                         <div class="col-75">
                             <select id="city" name="city" onChange={(e)=>{setcity(e.target.value)}}>
-                                <option value="Delhi">Delhi</option>
-                                <option value="Jaipur">Jaipur</option>
-                                <option value="Mumbai">Mumbai</option>
-                                <option value="Chennai">Chennai</option>
-                                <option value="Puna">Puna</option>
+                            <option value='Delhi'>Delhi</option>
+                            <option value='Mumbai'>Mumbai</option>
+                            <option value='Kolkata'>Kolkata</option>
+                            <option value='Chennai'>Chennai</option>
+                            <option value='Bangalore'>Bangalore</option>
+                            <option value='Dehradun'>Dehradun</option>
+                            <option value='Jaipur'>Jaipur</option>
+                            <option value='Goa'>Goa</option>
                             </select>
                         </div>
                     </div>
@@ -172,10 +177,6 @@ function Hotelregister() {
                                 <label>Kitchen</label>
                             </div>
                             <div>
-                                <input type='checkbox' name='dryClean' id='dryClean' value={dryClean} onChange={(e)=>{setdryClean(e.target.checked)}}></input>
-                                <label>Dry Cleaning</label>
-                            </div>
-                            <div>
                                 <input type='checkbox' name='laundry' id='laundry' value={laundry} onChange={(e)=>{setlaundry(e.target.checked)}}></input>
                                 <label>Laundry</label>
                             </div>
@@ -190,6 +191,10 @@ function Hotelregister() {
                             <div>
                                 <input type='checkbox' name='pool' id='pool' value={pool} onChange={(e)=>{setpool(e.target.checked)}}></input>
                                 <label>Swimming Pool</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='spa' id='spa' value={spa} onChange={(e)=>{setspa(e.target.checked)}}></input>
+                                <label>SPA</label>
                             </div>
                         </div>
                     </div>

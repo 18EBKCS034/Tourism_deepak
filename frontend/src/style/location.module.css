@@ -5,8 +5,8 @@
     cursor: pointer;
 }
 .LocationCard img{
-    width: 64px;
-    height: 64px;
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
     margin-right: 1em;
 }

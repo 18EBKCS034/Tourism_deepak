@@ -68,6 +68,9 @@ function search(){
               <option value='Kolkata'>Kolkata</option>
               <option value='Chennai'>Chennai</option>
               <option value='Bangalore'>Bangalore</option>
+              <option value='Dehradun'>Dehradun</option>
+              <option value='Jaipur'>Jaipur</option>
+              <option value='Goa'>Goa</option>
             </select>
             <NavLink to='/SearchPage' exact><button>SEARCH</button></NavLink>
         </div>

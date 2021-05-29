@@ -18,7 +18,7 @@ function SearchPage() {
             sethotel(res.data.data);
         });
     }, []);
-
+    
     var hotelList = hotel.map((h)=>{
         if(h.HotelDetails.city == City){
             return <li key={h._id}>
@@ -33,6 +33,7 @@ function SearchPage() {
                             lift={h.HotelDetails.lift}
                             parking={h.HotelDetails.parking}
                             pool={h.HotelDetails.pool}
+                            spa={h.HotelDetails.spa}
                             price={h.HotelDetails.price}
                         />
                    </li>
