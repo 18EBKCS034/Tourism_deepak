@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Hotelregister.css';
 import { useSelector } from 'react-redux';
+import {baseURL} from '../config';
 import axios from 'axios';
 
 
@@ -15,8 +16,18 @@ function Hotelregister() {
     const [hotelname, sethotelname] = useState("");
     const [city, setcity] = useState("");
     const [description, setdescription] = useState("");
+    const [hotelprice, sethotelprice] = useState("");
+    const [wifi, setwifi] = useState("");
+    const [kitchen, setkitchen] = useState("");
+    const [laundry, setlaundry] = useState("");
+    const [dryClean, setdryClean] = useState("");
+    const [lift, setlift] = useState("");
+    const [bar, setbar] = useState("");
+    const [parking, setparking] = useState("");
+    const [location, setlocation] = useState("");
+    const [pool, setpool] = useState("");
 
-    function setValue(e){
+    function setImg(e){
         e.target.name == "hotel" && (hotel = e.target.files);
     }
 
@@ -36,6 +47,9 @@ function Hotelregister() {
         else if(description == ""){
             alert("Description Cannot be Empty");
         }
+        else if(hotelprice == ""){
+            alert("Price Cannot be Empty");
+        }
         else{
             var formData = new FormData();
             formData.append("name",name);
@@ -43,12 +57,20 @@ function Hotelregister() {
             formData.append("hotelname",hotelname);
             formData.append("city",city);
             formData.append("description",description);
+            formData.append('location',location);
+            formData.append("price",hotelprice);
+            formData.append("bar",bar);
+            formData.append("wifi",wifi);
+            formData.append("dryClean",dryClean);
+            formData.append("lift",lift);
+            formData.append("laundry",laundry);
+            formData.append("kitchen",kitchen);
+            formData.append("pool",pool);
             formData.append("userId",userId);
             for(var h of hotel){
                 formData.append('hotel',h);
             }
-            console.log(formData);
-            axios.post("http://localhost:3000/postHotel", formData, {
+            axios.post(baseURL+'postHotel', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -67,7 +89,7 @@ function Hotelregister() {
 
 
             <div class="container">
-                <form action="/action_page.php">
+                <form>
                     <div class="row">
                         <div class="col-25">
                             <label for="fname">First Name:</label>
@@ -95,6 +117,14 @@ function Hotelregister() {
                     </div>
                     <div class="row">
                         <div class="col-25">
+                            <label for="lname">Hotel Price</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="hotelname" name="hotelprice" placeholder=" Enter your Hotel Price/night" value={hotelprice} onChange={(e)=>{sethotelprice(e.target.value)}} />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
                             <label for="country">City</label>
                         </div>
                         <div class="col-75">
@@ -109,10 +139,18 @@ function Hotelregister() {
                     </div>
                     <div class="row">
                         <div class="col-25">
+                            <label for="lname">Location</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="location" name="location" placeholder=" Enter your Hotel's location" value={location} onChange={(e)=>{setlocation(e.target.value)}} />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
                             <label for="lname">Hotel photos</label>
                         </div>
                         <div class="custom-file mb-3 col-75">
-                            <input style={{height:"40px",width:"840px",border:"2px solid grey",marginTop:"-20px",marginLeft:"-30px"}} type="file" multiple  name="hotel" onChange={(e)=>{setValue(e);}} />
+                            <input name="hotel" onChange={(e)=>{setImg(e)}} type='file' multiple style={{height:"40px",width:"840px",border:"2px solid grey",marginTop:"-20px",marginLeft:"-30px"}}/>
                         </div>
                     </div>
 
@@ -120,8 +158,39 @@ function Hotelregister() {
                         <div class="col-25">
                             <label for="lname">Attraction of hotel </label>
                         </div>
-                        <div class="custom-file mb-3 col-75">
-                            <input type="file" class="custom-file-input" id="customFile" name="filename" />
+                        <div class="custom-file mb-3 col-75 attraction">
+                            <div>
+                                <input type='checkbox' name='wifi' id='wifi' value={wifi} onChange={(e)=>{setwifi(e.target.checked)}}></input>
+                                <label>Wifi</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='bar' id='bar' value={bar} onChange={(e)=>{setbar(e.target.checked)}}></input>
+                                <label>Bar</label>
+                            </div>      
+                            <div>
+                                <input type='checkbox' name='kitchen' id='kitchen' value={kitchen} onChange={(e)=>{setkitchen(e.target.checked)}}></input>
+                                <label>Kitchen</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='dryClean' id='dryClean' value={dryClean} onChange={(e)=>{setdryClean(e.target.checked)}}></input>
+                                <label>Dry Cleaning</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='laundry' id='laundry' value={laundry} onChange={(e)=>{setlaundry(e.target.checked)}}></input>
+                                <label>Laundry</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='lift' id='lift' value={lift} onChange={(e)=>{setlift(e.target.checked)}}></input>
+                                <label>Lift</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='parking' id='parking' value={parking} onChange={(e)=>{setparking(e.target.checked)}}></input>
+                                <label>Parking</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='pool' id='pool' value={pool} onChange={(e)=>{setpool(e.target.checked)}}></input>
+                                <label>Swimming Pool</label>
+                            </div>
                         </div>
                     </div>
 

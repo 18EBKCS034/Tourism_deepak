@@ -67,6 +67,34 @@
     transform: translateY(-104px);
     transition: 300ms all ease-in-out;
 }
+.searchDiv{
+    width: 30%;
+    display: flex;
+    position: absolute;
+    top: 25px;
+    left: 30%;
+}
+.searchDiv select{
+    height: 45px;
+    width: 100%;
+    padding: 0;
+    padding-left: 10px;
+    outline-style: none;
+    border: none;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+.searchDiv button{
+    position: absolute;
+    top: 0px;
+    left: 81%;
+    outline-style: none;
+    border: none;
+    border-radius: 50px;
+    padding: 11px;
+    color: white;
+    background: tomato;
+}
 @media screen and (max-width: 860px) {
     .Header{
         display: none;

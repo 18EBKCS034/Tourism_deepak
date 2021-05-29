@@ -25,6 +25,7 @@
     padding-left: 20px;
 }
 
+
 .searchResult__heart {
     position: absolute;
     top: 20px;
@@ -45,7 +46,17 @@
     font-size: 13px;
     color: gray;
   }
-  
+
+  .searchResult__infoTop div{
+      width: 90%;
+      display: flex;
+      justify-content: space-evenly;
+  }
+
+  .searchResult__infoTop div img{
+      height: 35px;
+  }
+
 .searchResult__infoBottom {
     display: flex;
     justify-content: space-between;

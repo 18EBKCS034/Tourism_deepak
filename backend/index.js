@@ -23,6 +23,18 @@ client.connect((err, db)=>{
     }
 });
 
+app.post('/listHotel',bodyParser.json(),(rew,res)=>{
+    var hotelCollection = connection.db('tour').collection('hotel');
+    hotelCollection.find({}).toArray((err,docs)=>{
+        if(!err){
+            res.send({status:"ok",data:docs});
+        }
+        else{
+            res.send({status:"failed",data:err});
+        }
+    });
+});
+
 app.post('/postHotel', bodyParser.json(),(req,res)=>{
     upload(req,res,(err)=>{
         if(err){
@@ -45,7 +57,7 @@ app.post('/postHotel', bodyParser.json(),(req,res)=>{
     });
 });
 
-app.get('/checkUser', (req,res)=>{
+app.post('/checkUser', (req,res)=>{
     var userCollection = connection.db('tour').collection('user');
     userCollection.find({email: req.query.email}).toArray((err,docs)=>{
         if(!err){
@@ -74,7 +86,7 @@ app.post('/registerUser', bodyParser.json(), (req,res)=>{
     });
 });
 
-app.get('/getUser', (req,res)=>{
+app.post('/getUser', (req,res)=>{
     var userCollection = connection.db('tour').collection('user');
     userCollection.find({_id:ObjectID(req.query.id)}).toArray((err,docs)=>{
         if(!err){
@@ -86,7 +98,7 @@ app.get('/getUser', (req,res)=>{
     });
 });
 
-app.get('/loginUser', (req,res)=>{
+app.post('/loginUser', (req,res)=>{
     var userCollection = connection.db('tour').collection('user');
     userCollection.find({email: req.query.email , password: req.query.password}).toArray((err,docs)=>{
         if(!err){
@@ -98,7 +110,7 @@ app.get('/loginUser', (req,res)=>{
     })
 });
 
-app.get('/forgotPassword',(req,res)=>{
+app.post('/forgotPassword',(req,res)=>{
     var userCollection = connection.db('tour').collection('user');
     userCollection.find({email: req.query.email}).toArray((err,data)=>{
         if(!err){

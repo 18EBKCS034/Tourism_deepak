@@ -7,10 +7,14 @@ function SearchResult({
     img,
     location,
     title,
-    description,
-    star,
+    wifi,
+    kitchen,
+    bar,
+    laundry,
+    lift,
+    parking,
+    pool, 
     price,
-    total,
 }) {
     return (
         <div className='searchResult'>
@@ -22,19 +26,27 @@ function SearchResult({
                     <p>{location}</p>
                     <h3>{title}</h3>
                     <p>____</p>
-                    <p>{description}</p>
+                    <div>
+                        {wifi?<img src='images/wifi.png' />:""}
+                        {kitchen?<img src='images/food.png' />:""}
+                        {laundry?<img src='images/laundry.png' />:""}
+                        {bar?<img src='images/bar.png' />:""}
+                        {parking?<img src='images/parking.png' />:""}
+                        {lift?<img src='images/lift.png' />:""}
+                        {pool?<img src='images/pool.png' />:""}
+                    </div>
                 </div>
 
                 <div className="searchResult__infoBottom">
                     <div className="searchResult__stars">
                         <StarIcon className="searchResult__star" />
                         <p>
-                            <strong>{star}</strong>
+                            {/* <strong>{star}</strong> */}
                         </p>
                     </div>
                     <div className='searchResults__price'>
-                        <h2>{price}</h2>
-                        <p>{total}</p>
+                        <h2>{price+"/night"}</h2>
+                        {/* <p>{total}</p> */}
                     </div>
                 </div>
             </div>
