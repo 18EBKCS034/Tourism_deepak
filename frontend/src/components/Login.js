@@ -125,7 +125,7 @@ export default function Login(props) {
 			<input type="text" placeholder="Name" value={username} onChange={(e)=>{setusername(e.target.value)}} />
 			<input type="email" placeholder="Email" value={useremail} onChange={(e)=>{setuseremail(e.target.value)}}/>
 			<input type="password" placeholder="Password" value={userpassword} onChange={(e)=>{setuserpassword(e.target.value)}}/>
-			<button onClick={()=>{verify();}}>Get Verified</button>
+			<button type="button" onClick={()=>{verify();}}>Get Verified</button>
 			<input type='text' placeholder='Verification Code'value={code1} onChange={(e)=>{setcode1(e.target.value)}}/>
 			<button onClick={()=>{register();}}>Sign Up</button>
 		</form>

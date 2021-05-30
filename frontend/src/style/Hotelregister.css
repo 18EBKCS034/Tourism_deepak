@@ -8,7 +8,7 @@
 }
 input[type=text], select, textarea ,#email{
   width: 100%;
-  padding:12px 12px 12px  32px;
+  padding:12px 12px 12px  12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
@@ -35,6 +35,7 @@ input[type=submit]:hover {
 
 .container {
   border-radius: 5px;
+  height: 775px;
   background-color: #f2f2f2;
   padding: 20px;
 }

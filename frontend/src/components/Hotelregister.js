@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './Hotelregister.css';
+import '../style/Hotelregister.css';
 import { useSelector } from 'react-redux';
 import {baseURL} from '../config';
 import axios from 'axios';
 
 
-function Hotelregister() {
+function Hotelregister(props) {
 
     var hotel;
 
@@ -78,6 +78,7 @@ function Hotelregister() {
                 }
             }).then((res)=>{
                 alert(res.data.data);
+                props.history.push('/');
             }).catch(res=>{
                 alert("sorry you are not authorised to do this action");
             });
@@ -131,6 +132,7 @@ function Hotelregister() {
                         </div>
                         <div class="col-75">
                             <select id="city" name="city" onChange={(e)=>{setcity(e.target.value)}}>
+                            <option value=''>Select a city</option>
                             <option value='Delhi'>Delhi</option>
                             <option value='Mumbai'>Mumbai</option>
                             <option value='Kolkata'>Kolkata</option>
@@ -159,6 +161,16 @@ function Hotelregister() {
                         </div>
                     </div>
 
+                    
+
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="subject">Your Hotel Discription</label>
+                        </div>
+                        <div class="col-75">
+                            <textarea id="subject" name="subject" class="h-100" placeholder="Write something about your hotel..." value={description} onChange={(e)=>{setdescription(e.target.value)}} ></textarea>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-25">
                             <label for="lname">Attraction of hotel </label>
@@ -198,18 +210,11 @@ function Hotelregister() {
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="subject">Your Hotel Discription</label>
-                        </div>
-                        <div class="col-75">
-                            <textarea id="subject" name="subject" class="h-100" placeholder="Write something about your hotel..." value={description} onChange={(e)=>{setdescription(e.target.value)}} ></textarea>
-                        </div>
-                    </div>
                     <div class="row btn">
                         <input type="button" class="bg-danger" value="Submit Your Form" onClick={()=>{sendData();}}/>
                     </div>
+
+                    
                 </form>
             </div>
         </div>

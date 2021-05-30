@@ -3,7 +3,7 @@ import Experience from './Experience'
 import LiveAnywhere from './LiveAnywhere'
 import Location from './Location'
 import MillionHost from './MillionHost'
-import TabsSection from './TabsSection'
+// import TabsSection from './TabsSection'
 import Footer from './Footer';
 
 function Home2() {
@@ -17,7 +17,7 @@ function Home2() {
         <Experience />
         <div className="customContainer">
           <MillionHost />
-          <TabsSection />
+          {/* <TabsSection /> */}
         </div>
         <Footer />
         </div>

@@ -3,14 +3,13 @@ import style from "../style/header.module.css";
 import HeaderForm from "./HeaderForm";
 import ResponsiveHeader from "./ResponsiveHeader";
 import { NavLink, Switch, Route } from 'react-router-dom';
-import { Button } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
 import style2 from '../style/heroSection.module.css'
 import Home2 from "./Home2";
 import Login from './Login';
 import Hotelregister from './Hotelregister';
 import SearchPage from './SearchPage'
 import { useDispatch, useSelector } from "react-redux";
+import Profile from "./Profile";
 
 export default function Header(props) {
   // const history = useHistory();
@@ -103,6 +102,13 @@ function search(){
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
+              {isLogin?
+              <NavLink to='/Profile' exact>
+              <a class="dropdown-item">
+                My Profile
+              </a>
+              </NavLink>
+              :""}
              {isLogin?"" :<NavLink to='/Login' exact>
               <a class="dropdown-item" href="#">
                 Login in
@@ -129,10 +135,14 @@ function search(){
     >
       
       <h1>Go Near</h1>
-      <Button variant='outlined'>Explore Nearby</Button>
+      {/* <NavLink to='/SearchPage' exact>
+      <Button>Explore</Button>
+      </NavLink> */}
     </div>
     
     <Switch>
+    <Route path='/Profile' exact component={Profile}>
+      </Route>
       <Route path='/Login' exact component={Login}>
       </Route>
       <Route path='/Hotelregister' exact component={Hotelregister}>

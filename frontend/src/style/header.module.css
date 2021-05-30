@@ -75,7 +75,7 @@
     left: 30%;
 }
 .searchDiv select{
-    height: 45px;
+    height: 47px;
     width: 100%;
     padding: 0;
     padding-left: 10px;
@@ -86,11 +86,11 @@
 }
 .searchDiv button{
     position: absolute;
-    top: 0px;
-    left: 81%;
+    top: 0.5px;
+    left: 80.5%;
     outline-style: none;
     border: none;
-    border-radius: 50px;
+    border-radius: 25px;
     padding: 11px;
     color: white;
     background: tomato;
