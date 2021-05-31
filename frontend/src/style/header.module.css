@@ -87,6 +87,7 @@
 .searchDiv button{
     position: absolute;
     top: 0.5px;
+    left: 80.5%;
     border:solid 5px black;
     outline-style: none;
     border: none;

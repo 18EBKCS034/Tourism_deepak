@@ -28,26 +28,28 @@ export default function Profile() {
               name: name,
           }
           axios.post(baseURL+"updateName", data).then((res)=>{
-              alert(res.data.data);
+              // alert(res.data.data);
               window.location.reload(true);
           });
         document.getElementById('update').style.display = 'none';
+        document.getElementById('btnprofiles').style.display = 'block';
   }
 
   function show(){
       document.getElementById('update').style.display = 'block';
+      document.getElementById('btnprofiles').style.display = 'none';
   }
 
 
     return (
       <div>
-          <h2 id="profile">User Profile Card</h2>
+          <h2 id="profiles">User Profile</h2>
 
-          <div class="card">
+          <div class="cards">
             <h1>{name}</h1>
-            <p class="title">{email}</p>
+            <p class="titles">{email}</p>
             <p></p>
-            <div>
+            <div class="atag">
               <a href="#"><i class="fa fa-dribbble"></i></a> 
               <a href="#"><i class="fa fa-twitter"></i></a>  
               <a href="#"><i class="fa fa-linkedin"></i></a>  
@@ -58,7 +60,7 @@ export default function Profile() {
             <button onClick={()=>{updateName();}}>Update</button>
             </div>
 
-            <p><button id="btnprofile" onClick={()=>{show();}}>Update Name</button></p>
+            <p><button id="btnprofiles" onClick={()=>{show();}}>Update Name</button></p>
           </div>
      </div>
 
