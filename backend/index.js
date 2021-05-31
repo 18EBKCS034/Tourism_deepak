@@ -123,6 +123,18 @@ app.post('/forgotPassword',(req,res)=>{
     })
 });
 
+app.post('/updateName' , bodyParser.json(),(req,res)=>{
+    var userCollection = connection.db('tour').collection('user');
+    userCollection.update({_id:ObjectID(req.body.id)},{$set:{name:(req.body.name)}},(err,result)=>{
+        if(!err){
+            res.send({status:"ok",data:"Changes Made Succesfully"});
+        }
+        else{
+            res.send({status:"failed",data:err});
+        }
+    }); 
+});
+
 function sendMail(from, appPassword, to, subject,  htmlmsg){
     let transporter=nodemailer.createTransport({
             host:"smtp.gmail.com",

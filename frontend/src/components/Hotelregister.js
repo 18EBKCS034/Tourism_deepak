@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import {baseURL} from '../config';
 import axios from 'axios';
 
+var hotel;
 
 function Hotelregister(props) {
 
-    var hotel;
 
     const userId = useSelector(state => state.UserData);
 
@@ -69,8 +69,8 @@ function Hotelregister(props) {
             formData.append("pool",pool);
             formData.append("spa",spa);
             formData.append("userId",userId);
-            for(var h of hotel){
-                formData.append('hotel',h);
+            for(var i=0; i<hotel.length; i++){
+                formData.append('hotel',hotel[i]);
             }
             axios.post(baseURL+'postHotel', formData, {
                 headers: {
