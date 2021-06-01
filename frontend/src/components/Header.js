@@ -10,6 +10,7 @@ import Hotelregister from './Hotelregister';
 import SearchPage from './SearchPage'
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "./Profile";
+import Hotelpage from "./Hotelpage";
 
 export default function Header(props) {
   // const history = useHistory();
@@ -57,7 +58,7 @@ function search(){
           className={style.logo}
           style={{ color: translateHeader ? "red" : "white" }}
         >
-          <span className="d-none d-xl-block">Take A Trip</span>
+          <span className="d-none d-xl-block">MyTrip</span>
         </a>
         <div className={style.searchDiv}>
             <select onChange={(e)=>{setcity(e.target.value);}} onClick={()=>{search();}}>
@@ -78,7 +79,7 @@ function search(){
         <div className={`ml-auto ${style.actionBtn}`}>
           <NavLink to={isLogin?'/Hotelregister':'/Login'} exact>
           <a href="#" style={{ color: translateHeader ? "#222222" : "white" }}>
-            Become a host
+            Post Your Hotels
           </a>
           </NavLink>
           <a href="#" style={{ color: translateHeader ? "#222222" : "" }}>
@@ -106,6 +107,13 @@ function search(){
               <NavLink to='/Profile' exact>
               <a class="dropdown-item">
                 My Profile
+              </a>
+              </NavLink>
+              :""}
+               {isLogin?
+              <NavLink to='/Hotelpage' exact>
+              <a class="dropdown-item">
+                Hotel pages
               </a>
               </NavLink>
               :""}
@@ -142,6 +150,8 @@ function search(){
     
     <Switch>
     <Route path='/Profile' exact component={Profile}>
+      </Route>
+      <Route path='/Hotelpage' exact component={Hotelpage}>
       </Route>
       <Route path='/Login' exact component={Login}>
       </Route>

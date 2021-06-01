@@ -5,94 +5,51 @@ export default function Footer() {
   return (
     <div className={style.Footer}>
       <div className="row">
-        <div className="col-lg-3">
+        <div className="col-lg-4">
           <div className={style.FooterItem}>
             <h6 className={style.title}>About</h6>
             <div className="row">
               <div className="col-md-4 col-lg-12">
                 <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
+                Our mission is to fuel our partners’ growth through our unparalleled technology, travel supply and support services.
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-lg-3">
+        <div className="col-lg-4">
           <div className={style.FooterItem}>
-            <h6 className={style.title}>COMMUNITY</h6>
+            <h6 className={style.title}>GET IN TOUCH</h6>
             <div className="row">
               <div className="col-md-4 col-lg-12">
                 <a href="#" className={style.link}>
-                  abcd
+                <p>
+                        <i class="fa fa-home w3-large"></i>&nbsp;&nbsp;&nbsp;25ES2-E,1st Floor,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Sant Nagar, East of <br/>&nbsp;&nbsp;&nbsp;&nbsp;Kailash, New Delhi, <br/>&nbsp;&nbsp;&nbsp;&nbsp;Delhi, India 110065<br />
+                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;info@naini-tal<br />
+                        <i class="fa fa-whatsapp"></i>&nbsp;&nbsp;+91 98765 43210
+                        </p>
                 </a>
               </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
+             
             </div>
           </div>
         </div>
-        <div className="col-lg-3">
+        <div className="col-lg-4">
           <div className={style.FooterItem}>
             <h6 className={style.title}>HOST</h6>
             <div className="row">
               <div className="col-md-4 col-lg-12">
                 <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
+                        Online Demo
+                        Mobile Apps
+                        Our Services
+                        Portfolio Analysis
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-lg-3">
-          <div className={style.FooterItem}>
-            <h6 className={style.title}>SUPPORT</h6>
-            <div className="row">
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-              <div className="col-md-4 col-lg-12">
-                <a href="#" className={style.link}>
-                  abcd
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <div className="col-12">
           <div
             className={`${style.FooterContent} justify-content-start justify-content-sm-center justify-content-lg-between`}

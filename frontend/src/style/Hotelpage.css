@@ -1,0 +1,72 @@
+
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  background-color:rgb(216, 216, 216);
+}
+
+/* Clear floats after the columns */
+.row {
+   margin: 30px;
+}
+#Hroomh2{
+   padding-top: 80px;
+}
+.Hroom img{
+  width: 400px;
+  height: 400px;
+  margin: 50px;
+  border-radius: 40px;
+  float: left;
+}
+
+#pageh1{
+    text-align: center;
+    margin: 40px;
+    font-size: 60px;
+    font-family:'Times New Roman', Times, serif;
+    color: black;
+}
+#pageh2{
+  text-align: center;
+  margin: 40px;
+  font-size: 20px;
+  font-family:cursive;
+  color: black;
+}
+.cardp1 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    float: left;
+    margin-left: 40px;
+
+  }
+  
+  .price1 {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .cardp1 button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: rgb(255, 0, 0);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .cardp1 button:hover {
+    opacity: 0.7;
+  }
+  #Hroomfooter{
+    margin-top: 50px;
+    float: left;
+  }
