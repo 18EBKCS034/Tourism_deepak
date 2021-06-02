@@ -68,7 +68,7 @@ export default function Hotelpage() {
             <h2 id="pageh1">Our Rooms</h2>
 
             <h2 id="pageh2">Select Your Room Type</h2>
-            <div>
+            <div class="cardss">
             <div class="cardp1">
                 <img src="https://www.royalheritagehaveli.com/wp-content/uploads/2015/10/Suite2-1-270x270.jpg" alt="Room1" />
                 <h1>Luxery Room</h1>

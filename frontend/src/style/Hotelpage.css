@@ -20,7 +20,9 @@
   border-radius: 40px;
   float: left;
 }
-
+.cardss {
+  display: flex;
+}
 #pageh1{
     text-align: center;
     margin: 40px;
@@ -42,7 +44,6 @@
     text-align: center;
     font-family: arial;
     float: left;
-    margin-left: 40px;
 
   }
   
