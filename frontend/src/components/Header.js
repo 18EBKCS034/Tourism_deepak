@@ -73,7 +73,7 @@ function search(){
           className={style.logo}
           style={{ color: translateHeader ? "red" : "white" }}
         >
-          <span className="d-none d-xl-block">MyTrip</span>
+          <span className="d-none d-xl-block">Take A Trip</span>
         </a>
         <div className={style.searchDiv}>
             <select onChange={(e)=>{setcity(e.target.value);}} >

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {baseURL} from '../config';
-import '../style/Hotelpage.css'
+import '../style/Hotelpage.module.css';
 import Footer from './Footer';
 import RoomResult from './RoomResult';
 export default function Hotelpage() {
@@ -60,10 +60,10 @@ export default function Hotelpage() {
     return (
         <>
             
-            <div>
+            <div class="pagestyle">
 
                 <div class="row">
-                    <div class="column" >
+                    <div class="column" style={{display: "flex" , justifyContent: "center" , alignItems: "center" , marginLeft: "auto" , marginRight: "auto"}} >
                        
                         <div style={{width : "500px", height : "320px", background: "grey"}}>
                             <div style={{height: "320px"}} id='hotel' class="carousel slide" data-ride="carousel">

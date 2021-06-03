@@ -1,7 +1,11 @@
 .linkBtn{
-    background-color: red;
+
+    background-color: tomato;
     color: white;
-    margin-left: 45%;
+    padding: 6px;
+    border-radius: 25px;
+    margin-left: 47%;
+    margin-bottom: 10px;
 }
 .warning{
     text-align: center;

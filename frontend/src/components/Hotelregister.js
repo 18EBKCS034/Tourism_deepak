@@ -159,8 +159,9 @@ function Hotelregister(props) {
                             <label for="lname">Hotel photos</label>
                         </div>
                         <div class="custom-file mb-3 col-75">
-                            <input name="hotel" onChange={(e)=>{setImg(e)}} type='file' multiple style={{height:"40px",width:"840px",border:"2px solid grey",marginTop:"-20px",marginLeft:"-30px"}}/>
+                            <input name="hotel" onChange={(e)=>{setImg(e)}} type='file' multiple style={{height:"40px",width:"820px",border:"2px solid grey",marginTop:"-20px",marginLeft:"-30px"}}/>
                         </div>
+                        <span style={{ marginLeft: "-30%" , color: "red" }}>Note:- User can uplode maximum 7 photos</span>
                     </div>
 
                     
@@ -175,7 +176,7 @@ function Hotelregister(props) {
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label for="lname">Attraction of hotel </label>
+                            <label for="lname" class="namess">Attraction of hotel </label>
                         </div>
                         <div class="custom-file mb-3 col-75 attraction">
                             <div>

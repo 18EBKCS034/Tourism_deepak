@@ -74,6 +74,20 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem; }
+#pageh1 {
+  text-align: center;
+    margin: 40px;
+    font-size: 60px;
+    font-family:'Times New Roman', Times, serif;
+    color: black;
+}
+#pageh2{
+  text-align: center;
+  margin: 40px;
+  font-size: 20px;
+  font-family:cursive;
+  color: black;
+}
 
 p {
   margin-top: 0;
@@ -475,9 +489,7 @@ pre {
 
 .row {
   display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px; }
+  flex-wrap: wrap; }
 
 .no-gutters {
   margin-right: 0;

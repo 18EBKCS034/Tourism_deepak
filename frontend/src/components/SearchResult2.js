@@ -109,8 +109,8 @@ function SearchResult({
                         </p>
                     </div>
                     <div className='searchResults__price'>
-                        <NavLink to='/Hotelpage' exact><button onMouseOver={()=>{showDetails()}}>View Details</button></NavLink> 
-                        <NavLink to='/AddRoom' exact><button onMouseOver={()=>{showDetails()}}>Add Rooms</button></NavLink>
+                        <NavLink to='/Hotelpage' exact><button onMouseOver={()=>{showDetails()}} style={{ marginRight: "12px" , borderRadius: "25px" , padding: "6px" , backgroundColor: "tomato" , color: "white" }}>View Details</button></NavLink> 
+                        <NavLink to='/AddRoom' exact><button onMouseOver={()=>{showDetails()}} style={{ marginRight: "12px" , borderRadius: "25px" , padding: "6px" , backgroundColor: "tomato" , color: "white" }}>Add Rooms</button></NavLink>
                     </div>
                 </div>
             </div>

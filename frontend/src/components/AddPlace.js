@@ -53,8 +53,8 @@ export default function AddPlace(props) {
     return (
         <div>
             <h1>App Tourist Place</h1>
-            <form>
-                <input name='name' placeholder='enter name of place' value={name} onChange={(e)=>{setname(e.target.value);}}></input>
+            <form style={{ width: "660px" , display: "inline-block" , marginRight: "auto" , marginLeft: "435px"}}>
+                <input name='name' placeholder='Enter name of place' value={name} onChange={(e)=>{setname(e.target.value);}} style={{ width: "87.5vh" , height: "6.5vh" , border: "1px solid lightgray" }}></input>
                 {/* <input name='location' placeholder='enter location of place' value={location} onChange={(e)=>{setlocation(e.target.value);}}></input> */}
                 <select onChange={(e)=>{setcity(e.target.value);}}>
                         <option value=''>Select a City</option>
@@ -67,9 +67,12 @@ export default function AddPlace(props) {
                         <option value='Jaipur'>Jaipur</option>
                         <option value='Goa'>Goa</option>
                 </select>
-                <textarea name='description' placeholder='enter description' value={description} onChange={(e)=>{setdescription(e.target.value);}}></textarea>
-                <input name='tourist' type='file' multiple onChange={(e)=>{setImg(e);}}></input>
-                <button type='button' className='bg-danger' onClick={()=>{postTourist();}}>Post Place</button>
+                <textarea name='description' placeholder='Enter description' value={description} onChange={(e)=>{setdescription(e.target.value);}}></textarea>
+                <div style={{ display: "flex" , flexDirection: "column" , justifyContent: "center" , alignItems: "center" }}>
+                <span style={{ color: "red" , marginBottom: "20px" }}>Note:- User can uplode maximum 7 photos</span>
+                <input name='tourist' type='file' multiple onChange={(e)=>{setImg(e);}} style={{ marginBottom: "20px" , marginLeft: "15%" }}></input>
+                <button type='button' className='bg-danger' onClick={()=>{postTourist();}} style={{ marginBottom: "20px" }}>Post Place</button>
+                </div>
             </form>
         </div>
     )

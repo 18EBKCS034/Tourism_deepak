@@ -26,20 +26,8 @@
 .cardss {
   display: flex;
 }
-#pageh1{
-    text-align: center;
-    margin: 40px;
-    font-size: 60px;
-    font-family:'Times New Roman', Times, serif;
-    color: black;
-}
-#pageh2{
-  text-align: center;
-  margin: 40px;
-  font-size: 20px;
-  font-family:cursive;
-  color: black;
-}
+
+
 .cardp1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 400px;

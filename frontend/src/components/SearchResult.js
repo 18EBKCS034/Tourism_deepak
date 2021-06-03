@@ -60,8 +60,8 @@ function SearchResult({
                             <strong>{star}</strong>
                         </p>
                     </div>
-                    <div className='searchResults__price'>
-                        <NavLink to='/Hotelpage' exact><button onMouseOver={()=>{showDetails()}}>View Details</button></NavLink> 
+                    <div className='searchResults__price' >
+                        <NavLink to='/Hotelpage' exact><button onMouseOver={()=>{showDetails()}} style={{ marginRight: "12px" , borderRadius: "25px" , padding: "6px" , backgroundColor: "tomato" , color: "white" }}>View Details</button></NavLink> 
                     </div>
                 </div>
             </div>
