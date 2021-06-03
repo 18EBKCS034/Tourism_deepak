@@ -64,7 +64,7 @@ app.post('/deleteHotel' , bodyParser.json(),(req,res)=>{
     hotelCollection.remove({_id:ObjectID(req.query.id)} , (err,docs)=>{
         if(!err){
             var hotelCollection = connection.db('tour').collection('room');
-            hotelCollection.remove({hotelID : req.query.id} , (err,docs)=>{
+            hotelCollection.remove({"RoomDetails.hotelID" : req.query.id} , (err,docs)=>{
                 if(!err){
                     res.send({status:"ok",data:"Hotel Deleted Successfully"});
                 }
