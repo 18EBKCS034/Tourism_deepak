@@ -16,17 +16,18 @@ function Hotelregister(props) {
     const [hotelname, sethotelname] = useState("");
     const [city, setcity] = useState("");
     const [description, setdescription] = useState("");
-    const [hotelprice, sethotelprice] = useState("");
+    const [star, setstar] = useState("");
     const [wifi, setwifi] = useState("");
     const [kitchen, setkitchen] = useState("");
     const [laundry, setlaundry] = useState("");
-    const [dryClean, setdryClean] = useState("");
     const [lift, setlift] = useState("");
     const [bar, setbar] = useState("");
     const [parking, setparking] = useState("");
     const [location, setlocation] = useState("");
     const [pool, setpool] = useState("");
     const [spa, setspa] = useState("");
+    const [taxi, settaxi] = useState("");
+    const [airport, setairport] = useState("");
 
     function setImg(e){
         e.target.name == "hotel" && (hotel = e.target.files);
@@ -48,8 +49,8 @@ function Hotelregister(props) {
         else if(description == ""){
             alert("Description Cannot be Empty");
         }
-        else if(hotelprice == ""){
-            alert("Price Cannot be Empty");
+        else if(star == ""){
+            alert("Star Cannot be Empty");
         }
         else{
             var formData = new FormData();
@@ -59,15 +60,16 @@ function Hotelregister(props) {
             formData.append("city",city);
             formData.append("description",description);
             formData.append('location',location);
-            formData.append("price",hotelprice);
+            formData.append("star",star);
             formData.append("bar",bar);
             formData.append("wifi",wifi);
-            formData.append("dryClean",dryClean);
             formData.append("lift",lift);
             formData.append("laundry",laundry);
             formData.append("kitchen",kitchen);
             formData.append("pool",pool);
             formData.append("spa",spa);
+            formData.append("taxi",taxi);
+            formData.append("airport",airport);
             formData.append("userId",userId);
             for(var i=0; i<hotel.length; i++){
                 formData.append('hotel',hotel[i]);
@@ -120,10 +122,10 @@ function Hotelregister(props) {
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label for="lname">Hotel Price</label>
+                            <label for="lname">Hotel Star</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="hotelname" name="hotelprice" placeholder=" Enter your Hotel Price/night" value={hotelprice} onChange={(e)=>{sethotelprice(e.target.value)}} />
+                            <input type="number" id="hotelname" name="star" placeholder=" Enter your Hotel Star" value={star} onChange={(e)=>{setstar(e.target.value)}} />
                         </div>
                     </div>
                     <div class="row">
@@ -186,7 +188,7 @@ function Hotelregister(props) {
                             </div>      
                             <div>
                                 <input type='checkbox' name='kitchen' id='kitchen' value={kitchen} onChange={(e)=>{setkitchen(e.target.checked)}}></input>
-                                <label>Kitchen</label>
+                                <label>Restaurent</label>
                             </div>
                             <div>
                                 <input type='checkbox' name='laundry' id='laundry' value={laundry} onChange={(e)=>{setlaundry(e.target.checked)}}></input>
@@ -207,6 +209,14 @@ function Hotelregister(props) {
                             <div>
                                 <input type='checkbox' name='spa' id='spa' value={spa} onChange={(e)=>{setspa(e.target.checked)}}></input>
                                 <label>SPA</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='taxi' id='taxi' value={taxi} onChange={(e)=>{settaxi(e.target.checked)}}></input>
+                                <label>Taxi Service</label>
+                            </div>
+                            <div>
+                                <input type='checkbox' name='airport' id='airport' value={airport} onChange={(e)=>{setairport(e.target.checked)}}></input>
+                                <label>Airport Transfer</label>
                             </div>
                         </div>
                     </div>

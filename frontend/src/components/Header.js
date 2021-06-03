@@ -11,14 +11,20 @@ import SearchPage from './SearchPage'
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "./Profile";
 import Hotelpage from "./Hotelpage";
+import Dashboard from "./Dashboard";
+import AddRoom from './AddRoom';
+import axios from "axios";
+import { baseURL } from "../config";
+import AddPlace from "./AddPlace";
 
-export default function Header(props) {
+export default function Header() {
   // const history = useHistory();
 
   const isLogin = useSelector(state => state.isLogin);
   const dispatch = useDispatch();
-
   const [city, setcity] = useState("");
+  const [admin, setadmin] = useState("");
+  const [gener, setgener] = useState("All");
 
   const [translateHeader, setTranslateHeader] = useState(false);
   function handleScroll(e) {
@@ -32,16 +38,25 @@ export default function Header(props) {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, true);
+    var uid = localStorage.getItem("LOGIN_ID");
+       axios.post(baseURL+'getUser?id='+uid).then((res)=>{
+            setadmin(res.data.data[0].Admin);
+       });
   });
 
   function logout(){
     dispatch( {type:"LOGIN_FALSE"} );
     dispatch( {type:"LOGGEDOUT"} );
     localStorage.setItem("LOGIN_ID", "no");
+    window.location.reload(true);             
 }
 
 function search(){
-    dispatch({type:"SEARCHED",payload:city});
+    var data = {
+        city : city,
+        gener : gener
+    }
+    dispatch({type:"SEARCHED",payload:data});
 }
 
   return (
@@ -61,7 +76,7 @@ function search(){
           <span className="d-none d-xl-block">MyTrip</span>
         </a>
         <div className={style.searchDiv}>
-            <select onChange={(e)=>{setcity(e.target.value);}} onClick={()=>{search();}}>
+            <select onChange={(e)=>{setcity(e.target.value);}} >
               <option value=''>Select a City</option>
               <option value='Delhi'>Delhi</option>
               <option value='Mumbai'>Mumbai</option>
@@ -72,67 +87,35 @@ function search(){
               <option value='Jaipur'>Jaipur</option>
               <option value='Goa'>Goa</option>
             </select>
-            <NavLink to='/SearchPage' exact><button>SEARCH</button></NavLink>
+            <select onChange={(e)=>{setgener(e.target.value);}} >
+            <option value='All'>All</option>
+              <option value='Hotel'>Hotels</option>
+              <option value='Place'>Tourist Places</option>
+            </select>
+            <NavLink to='/SearchPage' exact><button onMouseOver={()=>{search();}}>SEARCH</button></NavLink>
         </div>
         </NavLink>
         <HeaderForm translateHeader={translateHeader} />
         <div className={`ml-auto ${style.actionBtn}`}>
-          <NavLink to={isLogin?'/Hotelregister':'/Login'} exact>
+          {admin=="true"?"":<NavLink to={isLogin?'/Hotelregister':'/Login'} exact>
           <a href="#" style={{ color: translateHeader ? "#222222" : "white" }}>
-            Post Your Hotels
+            Register Hotel
           </a>
-          </NavLink>
-          <a href="#" style={{ color: translateHeader ? "#222222" : "" }}>
-            <i class="fas fa-globe"></i>
+          </NavLink>}
+          {admin=="true"?<NavLink to='/AddPlace' exact>
+          <a href="#" style={{ color: translateHeader ? "#222222" : "white" }}>
+            Add Tourist Place
           </a>
-          <div class="dropdown">
-            <a
-              className={style.dropdownBtn}
-              href="#"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style={{ border: translateHeader ? "1px solid #cccccc" : "" }}
-            >
-              <i class="fas fa-bars"></i>
-              <i class="fas fa-user-circle"></i>
-            </a>
-            <div
-              class="dropdown-menu dropdown-menu-right"
-              aria-labelledby="dropdownMenuButton"
-            >
-              {isLogin?
-              <NavLink to='/Profile' exact>
-              <a class="dropdown-item">
-                My Profile
-              </a>
-              </NavLink>
-              :""}
-               {isLogin?
-              <NavLink to='/Hotelpage' exact>
-              <a class="dropdown-item">
-                Hotel pages
-              </a>
-              </NavLink>
-              :""}
-             {isLogin?"" :<NavLink to='/Login' exact>
-              <a class="dropdown-item" href="#">
-                Login in
-              </a>
-              </NavLink>}
-              {isLogin?<a class="dropdown-item" onClick={()=>{logout();}}>
+          </NavLink>:''}
+          {isLogin?<NavLink to='/Dashboard' exact>
+          <a href="#" style={{ color: translateHeader ? "#222222" : "white" }}>
+            Dashboard
+          </a>
+          </NavLink>:''}
+          {isLogin?<a style={{ color: translateHeader ? "#222222" : "white" }} onClick={()=>{logout();}}>
                 Logout
-              </a>:""}
-              <NavLink to={isLogin?'/Hotelregister':'/Login'} exact>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                Host your home
-              </a>
-              </NavLink>
-            </div>
-          </div>
+          </a>:""}
+          
         </div>
         
       </div>
@@ -160,6 +143,10 @@ function search(){
       <Route path='/' exact component={Home2}>
       </Route>
       <Route path='/SearchPage' exact component={SearchPage}></Route>
+      <Route path='/Dashboard' exact component={Dashboard}></Route>
+      <Route path='/AddRoom' exact component={AddRoom}></Route>
+      <Route path='/AddPlace' exact component={AddPlace}></Route>
+
 
     </Switch>
     </>

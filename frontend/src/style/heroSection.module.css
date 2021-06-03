@@ -1,7 +1,7 @@
 .HeroSection{
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    height:90vh;
+    height:70vh;
     position: relative;
     display: flex;
     flex-direction: column;

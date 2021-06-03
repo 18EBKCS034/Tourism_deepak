@@ -23,11 +23,55 @@ client.connect((err, db)=>{
     }
 });
 
+// app.get('/',(req,res)=>{
+//     res.sendFile('index.html');
+// });
+app.get('/Dashboard',(req,res)=>{
+    res.redirect('/');
+});
+app.get('/Hotelpage',(req,res)=>{
+    res.redirect('/');
+});
+
+
+
 app.post('/listHotel',bodyParser.json(),(rew,res)=>{
     var hotelCollection = connection.db('tour').collection('hotel');
     hotelCollection.find({}).toArray((err,docs)=>{
         if(!err){
             res.send({status:"ok",data:docs});
+        }
+        else{
+            res.send({status:"failed",data:err});
+        }
+    });
+});
+
+app.post('/detailHotel', bodyParser.json(),(req,res)=>{
+    var hotelCollection = connection.db('tour').collection('hotel');
+    hotelCollection.find({_id:ObjectID(req.query.id)}).toArray((err,docs)=>{
+        if(!err){
+            res.send({status:"ok",data:docs});
+        }
+        else{
+            res.send({status:"failed",data:err});
+        }
+    });
+});
+
+app.post('/deleteHotel' , bodyParser.json(),(req,res)=>{
+    var hotelCollection = connection.db('tour').collection('hotel');
+    hotelCollection.remove({_id:ObjectID(req.query.id)} , (err,docs)=>{
+        if(!err){
+            var hotelCollection = connection.db('tour').collection('room');
+            hotelCollection.remove({hotelID : req.query.id} , (err,docs)=>{
+                if(!err){
+                    res.send({status:"ok",data:"Hotel Deleted Successfully"});
+                }
+                else{
+                    res.send({status:"failed",data:err});
+                }
+            });
         }
         else{
             res.send({status:"failed",data:err});
@@ -53,6 +97,70 @@ app.post('/postHotel', bodyParser.json(),(req,res)=>{
                     res.send({status:"failed",data:err});
                 }
             });
+        }
+    });
+});
+app.post('/postRoom', bodyParser.json(),(req,res)=>{
+    upload(req,res,(err)=>{
+        if(err){
+            console.log("Error Occured during upload ");
+            console.log(err);
+            res.send({status:"failed", data:err});
+        }
+        else{
+            var roomCollection = connection.db('tour').collection('room');
+            var images = req.files.room.map(p=>p.filename);
+            roomCollection.insert({RoomDetails:req.body, RoomImages:images},(err,result)=>{
+                if(!err){
+                    res.send({status:"ok",data:"Room Added Succesfully"});
+                }
+                else{
+                    res.send({status:"failed",data:err});
+                }
+            });
+        }
+    });
+});
+app.post('/postPlace', bodyParser.json(),(req,res)=>{
+    upload(req,res,(err)=>{
+        if(err){
+            console.log("Error Occured during upload ");
+            console.log(err);
+            res.send({status:"failed", data:err});
+        }
+        else{
+            var placeCollection = connection.db('tour').collection('place');
+            var images = req.files.tourist.map(p=>p.filename);
+            placeCollection.insert({PlaceDetails:req.body, PlaceImages:images},(err,result)=>{
+                if(!err){
+                    res.send({status:"ok",data:"Place Added Succesfully"});
+                }
+                else{
+                    res.send({status:"failed",data:err});
+                }
+            });
+        }
+    });
+});
+app.post('/listRoom',bodyParser.json(),(rew,res)=>{
+    var roomCollection = connection.db('tour').collection('room');
+    roomCollection.find({}).toArray((err,docs)=>{
+        if(!err){
+            res.send({status:"ok",data:docs});
+        }
+        else{
+            res.send({status:"failed",data:err});
+        }
+    });
+});
+app.post('/listPlace',bodyParser.json(),(rew,res)=>{
+    var placeCollection = connection.db('tour').collection('place');
+    placeCollection.find({}).toArray((err,docs)=>{
+        if(!err){
+            res.send({status:"ok",data:docs});
+        }
+        else{
+            res.send({status:"failed",data:err});
         }
     });
 });

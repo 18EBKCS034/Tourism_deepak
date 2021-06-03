@@ -47,12 +47,6 @@
     color: gray;
   }
 
-  .searchResult__infoTop div{
-      width: 90%;
-      display: flex;
-      justify-content: space-evenly;
-  }
-
   .searchResult__infoTop div img{
       height: 35px;
   }

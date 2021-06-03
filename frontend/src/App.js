@@ -3,6 +3,8 @@ import Home from "./components/Home";
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import axios from "axios";
+import { baseURL } from "./config";
 
 
 function App() {

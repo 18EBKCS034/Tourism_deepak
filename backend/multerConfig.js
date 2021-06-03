@@ -20,7 +20,19 @@ var multerOptions = {
                 var fieldName = file.fieldname;
                 
                 if(fieldName == "hotel"){
-                    if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+                    if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg' && ext != '.jfif' && ext != '.webp') {
+                        return callback(new Error('Only images are allowed [ png , jpg & jpeg ]'));
+                    }
+                    callback(null, true);   
+                }
+                if(fieldName == "room"){
+                    if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg' && ext != '.jfif' && ext != '.webp') {
+                        return callback(new Error('Only images are allowed [ png , jpg & jpeg ]'));
+                    }
+                    callback(null, true);   
+                }
+                if(fieldName == "tourist"){
+                    if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg' && ext != '.jfif' && ext != '.webp') {
                         return callback(new Error('Only images are allowed [ png , jpg & jpeg ]'));
                     }
                     callback(null, true);   
@@ -28,6 +40,6 @@ var multerOptions = {
             }
 }
 
-var upload = multer(multerOptions).fields([{name:'hotel' , maxCount:7}]);
+var upload = multer(multerOptions).fields([{name:'hotel' , maxCount:7},{name:'room',maxCount:7},{name:'tourist',maxCount:7}]);
 
 module.exports = upload;

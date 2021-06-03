@@ -16,8 +16,12 @@ export default function Location() {
   ]);
   const dispatch = useDispatch();
 
-  function search(city){
-    dispatch({type:"SEARCHED",payload:city});
+  function search(city,gener){
+    var data = {
+      city : city,
+      gener : gener
+  }
+  dispatch({type:"SEARCHED",payload:data});
   }
 
   return (
@@ -26,7 +30,7 @@ export default function Location() {
         {data.map((item) => (
           <div className="col-3  mb-3">
             <div className={style.LocationCard}>
-              <NavLink to='/SearchPage' exact><img src={`/images/${item.image}`} alt="" onMouseOver={()=>{search(item.title);}} /></NavLink>
+              <NavLink to='/SearchPage' exact><img src={`/images/${item.image}`} alt="" onMouseOver={()=>{search(item.title,'All');}} /></NavLink>
               <div>
                 <h6>{item.title}</h6>
                 <p>{item.description}</p>

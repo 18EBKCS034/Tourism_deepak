@@ -2,6 +2,8 @@ import React from 'react';
 import '../style/SearchResult.css';
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import StarIcon from "@material-ui/icons/Star";
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 function SearchResult({
     img,
@@ -15,12 +17,21 @@ function SearchResult({
     parking,
     pool,
     spa, 
-    price,
+    star,
+    id,
+    taxi,
+    airport
 }) {
+
+    const dispatch = useDispatch();
+
+    function showDetails(){
+        dispatch({type:"CLICKED",payload:id});
+    }
+
     return (
         <div className='searchResult'>
             <img src={img} alt="" />
-            <FavoriteBorderIcon className="searchResult__heart" />
 
             <div className='searchResult__info'>
                 <div className="searchResult__infoTop">
@@ -36,6 +47,9 @@ function SearchResult({
                         {lift?<img src='images/lift.png' />:""}
                         {pool?<img src='images/pool.png' />:""}
                         {spa?<img src='images/SPA.png' />:""}
+                        {taxi?<img src='images/taxi.png' />:""}
+                        {airport?<img src='images/airport.png' />:""}
+
                     </div>
                 </div>
 
@@ -43,12 +57,11 @@ function SearchResult({
                     <div className="searchResult__stars">
                         <StarIcon className="searchResult__star" />
                         <p>
-                            {/* <strong>{star}</strong> */}
+                            <strong>{star}</strong>
                         </p>
                     </div>
                     <div className='searchResults__price'>
-                        <h2>{price+"/night"}</h2>
-                        {/* <p>{total}</p> */}
+                        <NavLink to='/Hotelpage' exact><button onMouseOver={()=>{showDetails()}}>View Details</button></NavLink> 
                     </div>
                 </div>
             </div>

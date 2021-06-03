@@ -43,11 +43,15 @@ export default function Login(props) {
             }
             else{
                 alert("Hello "+res.data.data[0].name+" you are successfully logged in.");
+				if(res.data.data[0].Admin){
+					console.log(res.data.data[0].Admin);
+					dispatch({type:"ADMIN"});
+				}
                 dispatch({type: "LOGIN_TRUE"});
                 var uid = res.data.data[0]._id;
                 dispatch({type: "LOGGEDIN",payload: uid });
                 localStorage.setItem("LOGIN_ID", uid);
-                props.history.push('/');
+                props.history.push('/Dashboard');
             }
         });
     }
@@ -99,6 +103,7 @@ export default function Login(props) {
             name: username,
             email: useremail,
             password: userpassword,
+			Admin:""
         }
         if( code3 == code1){
             axios.post(baseURL+'registerUser', user).then((res)=>{
@@ -142,7 +147,7 @@ export default function Login(props) {
 			<input type="email" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
 			<input type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
 			<a onClick={()=>{forgotPassword();}}>Forgot your password?</a>
-			<button onClick={()=>{login();}}>Sign In</button>
+			<button type='button' onClick={()=>{login();}}>Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
