@@ -63,7 +63,7 @@ export default function Hotelpage() {
             <div class="pagestyle">
 
                 <div class="row">
-                    <div class="column" style={{display: "flex" , justifyContent: "center" , alignItems: "center" , marginLeft: "auto" , marginRight: "auto"}} >
+                    <div class="column" style={{display: "flex" , justifyContent: "center" , alignItems: "center" , marginLeft: "auto" , marginRight: "auto" , marginTop: "50px"}} >
                        
                         <div style={{width : "500px", height : "320px", background: "grey"}}>
                             <div style={{height: "320px"}} id='hotel' class="carousel slide" data-ride="carousel">
